@@ -1,0 +1,146 @@
+<template>
+    <div>
+        <div class="w-full p-8 flex align-center justify-center">
+            <form action="" method="post" class="w-full">
+                <div class="w-full p-4 ">
+                    <div>
+                        <h1 class="text-xl p-4 font-bold">
+                            Ajouter un article
+                        </h1>
+                    </div>
+                    <div class="p-6" style="border-bottom: 1px solid rgba(128, 128, 128, 0.521)">
+                        <div class="flex w-full">
+                            <div class="mt-2 mb-2 w-full">
+                                <input type="text" class="p-2 w-full" style="" placeholder="Désignation de l'article" />
+                            </div>
+                            <div class="mt-2 mb-2 w-full">
+                                <select name="" id="" class="w-full pt-2 p-2 flex justify center" placeholder="">
+                                    <option value="">Séléctionnez le groupe de taxation</option>
+                                    <option v-for="(value, key) in taxGroups" :key="key" :value="value"
+                                        class="hover:bg-light-blue">{{
+                                            formatOptionLabel(key) }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex w-full">
+                            <div class="mt-2 mb-2 w-full">
+                                <input type="number" class="w-full pt-2 p-2" style="" placeholder="Prix Unitaire TTC" />
+                            </div>
+                            <div class="mt-2 mb-2 w-full">
+                                <input type="number" class="w-full pt-2 p-2" style="" placeholder="Quantité" />
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-2">
+                            <input type="number" class="w-full pt-2 p-2" style="" placeholder="Taxe Spécifique (TS)" />
+                        </div>
+                    </div>
+                    <div class="p-6 flex align-center justify-end">
+                        <div class="border p-2 px-4 cursor-pointer font-bold">Annuler</div>
+                        <div class="border ml-2 p-2 px-4 cursor-pointer font-bold text-white bg-primary border-primary">
+                            Enregistrer</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
+import $httpInfo from "../plugins/axiosInfo";
+import { useToast } from 'vue-toast-notification';
+const $toast = useToast();
+
+var taxGroups: any = ref();
+const infoTax = async () => {
+    const groupTax = await $httpInfo.get('/taxGroups')
+    try {
+        if (groupTax.data && groupTax.data.lenght !== 0 && groupTax.status === 200) {
+            taxGroups.value = groupTax.data
+            console.log(taxGroups.value.a);
+
+            return taxGroups.value;
+        } else {
+            $toast.error('Aucune donnée !')
+        }
+    } catch (error) {
+        $toast.error('Erreur lors de la récupération des données!')
+    }
+}
+
+const formatOptionLabel = (key: string) => {
+    switch (key) {
+        case "a":
+            return "A-EXONERER";
+        case "b":
+            return "B-TAXABLE 18%";
+        case "c":
+            return "C-EXPORTATION";
+        case "d":
+            return "D-TVA REGIME D'EXCEPTION 18%";
+        case "e":
+            return "E-REGIME TPS";
+        case "f":
+            return "F-RESERVE";
+        case "aibA":
+            return "AIB(1%)";
+        case "aibB":
+            return "AIB(5%)";
+        default:
+            return key;
+    }
+};
+
+onMounted(() => {
+    infoTax();
+})
+
+const getOptionDetails = (key: string) => {
+    switch (key) {
+        case "a":
+            return "Groupe A - Produits exonérés Biens ou services exonérés de la TVA (Exonération classoques)";
+        case "b":
+            return "Groupe B - Produits taxables Biens et services taxables à la TVA Concerne aussi les biens et services, taxables ou non, vendus à l’Etat, aux collectivités locales, aux sociétés d’Etat et autres démembrements de l’Etat par des entreprises relevant de la TPS ou non assujetties à la TVA";
+        case "c":
+            return "Groupe C - Produits taxables à l’exportation Enregistre les exportations de biens et services taxables au Bénin";
+        case "d":
+            return "Groupe D - Produits taxables dont le client bénéficie d’un régime d’exception";
+        case "e":
+            return "Groupe E - Moins de  50 millions de chiffre d’affaires  hors  option TVA";
+        case "f":
+            return "Groupe F - Réservé Prend tout ce qui n’est pas spécifié comme la Taxe de séjour, débours et consignations, contribution sur les services de communication etc";
+        case "aibA":
+            return "AIB(1%)";
+        case "aibB":
+            return "AIB(5%)";
+        default:
+            return key;
+    }
+
+}
+</script>
+
+<style scoped>
+h1 {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.521);
+}
+
+input {
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid rgba(128, 128, 128, 0.521);
+}
+
+select {
+    border-radius: 3px;
+    outline: none;
+    background: none;
+    border: 1px solid rgba(128, 128, 128, 0.521);
+    padding: 8px 0;
+}
+
+form {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 3px;
+}
+</style>

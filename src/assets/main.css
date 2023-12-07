@@ -1,0 +1,44 @@
+@charset "UTF-8";
+@tailwind base;
+
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    z-index: 5;
+    font-size: 14px;
+    color: black;
+    font-family: "sans-serif";
+}
+
+body {
+    overflow-x: hidden;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a,
+a.active a:hover {
+    text-decoration: none;
+}
+
+input{
+    border-radius: 5px;
+}
+select{
+    border-radius: 5px;
+}
+.container {
+    max-width: 1270px;
+    margin: 0 auto !important;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 100%;
+}
+
