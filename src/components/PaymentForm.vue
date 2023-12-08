@@ -1,10 +1,13 @@
 <template>
     <div>
-        <div class="w-full p-8 flex align-center justify-center">
+        <div class="w-full  flex align-center justify-center">
             <form action="" method="post" class="w-full">
 
-                <div class="p-6">
-                    <div class="mt-2 mb-2">
+                <div class="">
+                    <div class=" mt-2 mb-2">
+                        <h1 class="text-xl mb-2 font-bold">
+                            MOYEN DE PAIEMENT
+                        </h1>
                         <select name="" id="" class="w-full">
                             <option v-for="(value, key) in paymentTypes" :key="key" :value="value.type"
                                 class="hover:bg-light-blue">{{

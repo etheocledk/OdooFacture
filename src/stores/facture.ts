@@ -2,12 +2,12 @@ import { defineStore } from "pinia";
 import {ref} from "vue";
 import $httpInvoice  from "../plugins/axiosFacture";
 import { useToast } from 'vue-toast-notification';
-import type {Invoice} from '../../Types/invoice'
+import type {InvoiceData} from '../../Types/invoice'
 
 export const useInvoiceStore = defineStore('info', ()=>{
     const $toast = useToast();
     const dataInvoice = ref();
-    const sendInvoice = async (setData: Invoice)=>{
+    const sendInvoice = async (setData: InvoiceData)=>{
         const setInvoice = await $httpInvoice.post('/', setData)
         try{
             if(setInvoice && setInvoice.data != 0 && setInvoice.status === 200){

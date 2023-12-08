@@ -1,15 +1,15 @@
 <template>
     <div>
-        <div class="w-full p-8 flex align-center justify-center">
+        <div class="w-full  flex align-center justify-center">
             <form action="" method="post" class="w-full">
-                <div class="w-full p-4 ">
+                <div class="w-full">
                     <div>
-                        <h1 class="text-xl p-4 font-bold">
-                            Ajouter un article
+                        <h1 class="text-xl  mt-4 font-bold">
+                            AJOUTER UN ARTICLE
                         </h1>
                     </div>
-                    <div class="p-6" style="border-bottom: 1px solid rgba(128, 128, 128, 0.521)">
-                        <div class="flex w-full">
+                    <div class="" >
+                        <div class="flex mb-2 w-full">
                             <div class="mt-2 mb-2 w-full">
                                 <input type="text" class="p-2 w-full" style="" placeholder="Désignation de l'article" />
                             </div>
@@ -22,7 +22,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="flex w-full">
+                        <div class="flex my-2 w-full">
                             <div class="mt-2 mb-2 w-full">
                                 <input type="number" class="w-full pt-2 p-2" style="" placeholder="Prix Unitaire TTC" />
                             </div>
@@ -30,15 +30,11 @@
                                 <input type="number" class="w-full pt-2 p-2" style="" placeholder="Quantité" />
                             </div>
                         </div>
-                        <div class="mt-2 mb-2">
+                        <div class=" my-4">
                             <input type="number" class="w-full pt-2 p-2" style="" placeholder="Taxe Spécifique (TS)" />
                         </div>
                     </div>
-                    <div class="p-6 flex align-center justify-end">
-                        <div class="border p-2 px-4 cursor-pointer font-bold">Annuler</div>
-                        <div class="border ml-2 p-2 px-4 cursor-pointer font-bold text-white bg-primary border-primary">
-                            Enregistrer</div>
-                    </div>
+
                 </div>
             </form>
         </div>
@@ -140,7 +136,6 @@ select {
 }
 
 form {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     border-radius: 3px;
 }
 </style>

@@ -28,7 +28,7 @@
                     <!-- <p class="pt-4 pb-4">En cliquant sur <strong> Démarrer maintenant</strong>, vous acceptez <span><a href="">Conditions d'abonnement</a></span> et <span><a href="">Politique vie privée</a></span></p> -->
                     <div class="flex align-center justify-end pt-4 pb-4">
                         <!-- <button style="border:1px solid #017e84" class="font-bold">Changer les applications sélectionnées</button> -->
-                        <button style="border:1px solid white" class="bg-headerColor border-primary text-white font-bold"> <a href="invoiceList">Continuez</a></button>
+                        <button style="border:1px solid white" class="bg-headerColor border-primary text-white font-bold"> <a href="/invoiceList">Continuez</a></button>
                     </div>
                 </form>
             </div>

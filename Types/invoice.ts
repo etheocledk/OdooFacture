@@ -61,14 +61,14 @@ interface InvoiceItem {
     amount: number;
   }
   
-  interface Invoice {
+  interface InvoiceData {
     ifu: string;
     type: string;
     items: InvoiceItem[];
     client: Client;
-    operator: Operator;
+    operator?: Operator;
     payment: Payment[];
   }
   
-  export type { Invoice, InvoiceItem, Client, Operator, Payment };
+  export type { InvoiceData, InvoiceItem, Client, Operator, Payment };
   

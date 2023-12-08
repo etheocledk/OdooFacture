@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="w-full flex align-center justify-center">
+        <div class="w-full flex align-center justify-center ">
             <form action="" method="post" class="w-full">
                 <div class="w-full  ">
                     <div>
                         <h1 class="text-xl  font-bold">
-                            Client
+                            CLIENT
                         </h1>
                     </div>
                     <div class="" >
