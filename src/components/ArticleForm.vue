@@ -47,7 +47,7 @@ import { onMounted, ref } from "vue";
 import $httpInfo from "../plugins/axiosInfo";
 import type  {InvoiceData, Payment, InvoiceItem} from '../../Types/invoice';
 import { useToast } from 'vue-toast-notification';
-import { emit } from "process";
+/* import { emit } from "process"; */
 const $toast = useToast();
 
 const itemsArticle = ref<InvoiceItem>({
