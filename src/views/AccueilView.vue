@@ -2,6 +2,7 @@
     <div >
         <Header></Header>
         <AcceuilView/>
+        <CodeView></CodeView>
     </div>
 </template>
 

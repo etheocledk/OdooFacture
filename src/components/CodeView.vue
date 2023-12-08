@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div>
     <button @click="downloadPDF">Download PDF</button>
     <div ref="pdfContent">
@@ -10,7 +10,7 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup>
+<script setup>
 import { ref, onMounted } from 'vue';
 import QRCode from 'qrcode';
   import html2pdf from 'html2pdf.js';
@@ -39,7 +39,7 @@ onMounted(() => {
   generateQRCode('https://example.com'); 
 });
 
-async function generateQRCode(data: string) {
+async function generateQRCode(data) {
   try {
     const url = await QRCode.toDataURL(data);
     qrCodeUrl.value = url;
@@ -48,9 +48,4 @@ async function generateQRCode(data: string) {
   }
 }
 </script>
-<style scoped></style> -->
-<template>
-  <div>
-    
-  </div>
-</template>
+<style scoped></style>
