@@ -107,7 +107,7 @@
         </main>
     </div>
 
-
+    
 
 <!-- Modal1 -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -120,7 +120,7 @@
         </button>
       </div>
       <div class="modal-body">
-        Modal1
+        <CustomerForm></CustomerForm>
       </div>
       <div class="modal-footer">
         <button type="button" class="bg-headerColor px-2 py-2 rounded-md text-white font-[500]">Creer</button>
@@ -134,13 +134,13 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Informations</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Type de paiement</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             <span class="mdi mdi-alpha-x-circle mdi-24px"></span>
         </button>
       </div>
       <div class="modal-body">
-        Modal2
+        <PaymentForm></PaymentForm>
       </div>
       <div class="modal-footer">
         <button type="button" class="bg-headerColor px-2 py-2 rounded-md text-white font-[500]">Creer</button>
@@ -194,5 +194,7 @@
 <script setup lang="ts">
 import Invoice from '../components/Invoice.vue';
 import Header from "../components/Header.vue";
+import PaymentForm from "../components/PaymentForm.vue";
+import CustomerForm from '@/components/CustomerForm.vue';
 import { onMounted } from "vue";
 </script>
