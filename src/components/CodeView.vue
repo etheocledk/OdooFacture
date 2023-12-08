@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <button @click="downloadPDF">Download PDF</button>
     <div ref="pdfContent">
@@ -48,4 +48,9 @@ async function generateQRCode(data) {
   }
 }
 </script>
-<style scoped></style>
+<style scoped></style> -->
+<template>
+  <div>
+    
+  </div>
+</template>
