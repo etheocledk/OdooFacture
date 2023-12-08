@@ -18,7 +18,7 @@
                                     <option value="">Séléctionnez le groupe de taxation</option>
                                     <option v-for="(value, key) in taxGroups" :key="key" :value="value"
                                         class="hover:bg-light-blue">{{
-                                            formatOptionLabel(key) }}</option>
+                                            formatOptionLabel(key.toString()) }}</option>
                                 </select>
                             </div>
                         </div>
@@ -51,7 +51,7 @@ var taxGroups: any = ref();
 const infoTax = async () => {
     const groupTax = await $httpInfo.get('/taxGroups')
     try {
-        if (groupTax.data && groupTax.data.lenght !== 0 && groupTax.status === 200) {
+        if (groupTax.data && groupTax.data.length!== 0 && groupTax.status === 200) {
             taxGroups.value = groupTax.data
             console.log(taxGroups.value.a);
 
