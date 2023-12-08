@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="w-full flex align-center justify-center ">
-            <form action="" method="post" class="w-full">
+            <form  class="w-full" @submit.prevent="addCustomer(customer)">
                 <div class="w-full  ">
                     <div>
                         <h1 class="text-xl  font-bold">
@@ -12,23 +12,24 @@
                         <div class="flex flex-col w-full">
                             <div class="mt-2 mb-2 flex items-center gap-2 w-full">
                                 <label for="ifu" class="w-28 text-gray text-xl">IFU</label>
-                                <input type="text" class="w-full pt-2 p-2" style="" />
+                                <input type="text" class="w-full pt-2 p-2" style="" v-model="customer.ifu"/>
                             </div>
                             <div class="mt-2 mb-2 flex items-center gap-2 w-full">
                                 <label for="nom" class="w-28 text-gray text-xl">Nom</label>
-                                <input type="text" class="w-full pt-2 p-2" />
+                                <input type="text" class="w-full pt-2 p-2" v-model="customer.name"/>
                             </div>
                             <div class="mt-2 mb-2 flex items-center gap-2 w-full">
                                 <label for="adresse" class="w-28 text-gray text-xl">Adresse</label>
-                                <input type="text" class="w-full pt-2 p-2" />
+                                <input type="text" class="w-full pt-2 p-2" v-model="customer.address"/>
                             </div>
                             <div class="mt-2 mb-2 flex items-center gap-2 w-full">
                                 <label for="contact" class="w-28 text-gray text-xl">Contact</label>
-                                <input type="text" class="w-full pt-2 p-2" />
+                                <input type="text" class="w-full pt-2 p-2" v-model="customer.contact"/>
                             </div>
                         </div>
                     </div>
                 </div>
+                <button>+</button>
             </form>
         </div>
     </div>
@@ -38,8 +39,19 @@
 import { onMounted, ref } from "vue";
 import $httpInfo from "../plugins/axiosInfo";
 import { useToast } from 'vue-toast-notification';
+import type  {Client} from '../../Types/invoice';
 const $toast = useToast();
+const customer = ref({
+    contact: '',
+    ifu: '',
+    name: '',
+    address: ''
+  })
 
+const emits = defineEmits(['addCustomer'])
+function addCustomer(customer:Client){
+    emits('addCustomer', customer)
+}
 </script>
 <style scoped>
 h1 {
