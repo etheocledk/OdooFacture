@@ -1,9 +1,7 @@
-<template>
+<!-- <template>
   <div>
-    <!-- Your component's template -->
     <button @click="downloadPDF">Download PDF</button>
     <div ref="pdfContent">
-      <!-- Your Vue.js page content goes here -->
       <h1>{{ pageTitle }}</h1>
       <p>{{ pageDescription }}</p>
       <div>
@@ -20,10 +18,10 @@ import QRCode from 'qrcode';
   const pageTitle = ref('Vue.js Page');
   const pageDescription = ref('This is a description of the Vue.js page.');
   
-  const pdfContent = ref(null); // Create a ref for the pdfContent element
+  const pdfContent = ref(null); 
   
   const downloadPDF = () => {
-    const content = pdfContent.value; // Access the value of the ref
+    const content = pdfContent.value; 
   
     if (content) {
       html2pdf(content);
@@ -31,7 +29,6 @@ import QRCode from 'qrcode';
   };
   
   onMounted(() => {
-    // You can modify the content dynamically if needed
     pageTitle.value = 'Updated Title';
     pageDescription.value = 'This is an updated description.';
   });
@@ -39,7 +36,7 @@ import QRCode from 'qrcode';
 const qrCodeUrl = ref('');
 
 onMounted(() => {
-  generateQRCode('https://example.com'); // Remplacez l'URL par vos données
+  generateQRCode('https://example.com'); 
 });
 
 async function generateQRCode(data: string) {
@@ -51,4 +48,4 @@ async function generateQRCode(data: string) {
   }
 }
 </script>
-<style scoped></style>
+<style scoped></style> -->
