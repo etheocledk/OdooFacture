@@ -5,6 +5,8 @@ import PaymentView from '../views/PaymentView.vue'
 import Customer from '../views/customer.vue'
 import AccueilView from '@/views/AccueilView.vue'
 import Essai from '@/views/essai.vue'
+const userIfu = JSON.parse(localStorage.getItem('userInfo'))
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
