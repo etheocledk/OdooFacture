@@ -1,20 +1,21 @@
 <template>
     <div>
         <div class="w-full  flex align-center justify-center">
-            <form action="" method="post" class="w-full">
-
+            <form  class="w-full" @submit.prevent="addPayment(payment)">
                 <div class="">
                     <div class=" mt-2 mb-2">
                         <h1 class="text-xl mb-2 font-bold">
                             MOYEN DE PAIEMENT
                         </h1>
-                        <select name="" id="" class="w-full">
+
+                        <select name="" id="" class="w-full" v-model="payment.name">
                             <option v-for="(value, key) in paymentTypes" :key="key" :value="value.type"
                                 class="hover:bg-light-blue">{{
                                     value.description }}</option>
                         </select>
                     </div>
                 </div>
+                <button>+</button>
             </form>
         </div>
     </div>
@@ -46,8 +47,18 @@ select {
 import { onMounted, ref } from "vue";
 import $httpInfo from "../plugins/axiosInfo";
 import { useToast } from 'vue-toast-notification';
+import type  {InvoiceData, Payment, InvoiceItem} from '../../Types/invoice';
 const $toast = useToast();
 
+const payment = ref<Payment>({
+    name: "",
+    amount: 0
+})
+
+const emits = defineEmits(['addPayment'])
+function addPayment(data:Payment){
+    emits('addPayment', data)
+}
 //INFORMATION SUR LES TYPES DE PAIEMENTS
 const paymentTypes = ref();
 const infoPayment = async () => {
