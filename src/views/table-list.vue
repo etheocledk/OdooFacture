@@ -130,11 +130,10 @@
               </div>
               
             <select name="" id="" class="w-full" v-model="typeInvoice">
-             
               <option v-for="invoice in invoices" :value="invoice.type">{{ invoice.description }}</option>
             </select>
             <div class="modal-footer">
-              <button type="button"
+              <button type="submit"
                 class="border border-headerColor px-2 py-2 rounded-md text-headerColor font-[500]">Enregistrer</button>
             </div>
           </form>
@@ -331,10 +330,11 @@ async function invoicesType() {
   }
 }
 
-const typeInvoice = ref()
+const typeInvoice = ref("")
 function sendTypeInvoice (){
   localStorage.setItem('type', JSON.stringify(typeInvoice.value))
 }
+
 onMounted(() => {
   invoicesType();
 });
