@@ -49,3 +49,8 @@ async function generateQRCode(data: string) {
 }
 </script>
 <style scoped></style> -->
+<template>
+  <div>
+    
+  </div>
+</template>
