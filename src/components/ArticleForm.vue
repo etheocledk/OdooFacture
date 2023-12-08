@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="w-full  flex align-center justify-center">
-            <form action="" method="post" class="w-full">
+            <form action="" method="post" class="w-full" @submit.prevent="addArticle(itemsArticle)">
                 <div class="w-full">
                     <div>
                         <h1 class="text-xl  mt-4 font-bold">
@@ -11,11 +11,11 @@
                     <div class="" >
                         <div class="flex mb-2 w-full">
                             <div class="mt-2 mb-2 w-full">
-                                <input type="text" class="p-2 w-full" style="" placeholder="Désignation de l'article" />
+                                <input type="text" class="p-2 w-full" style="" placeholder="Désignation de l'article"  v-model="itemsArticle.name"/>
                             </div>
                             <div class="mt-2 mb-2 w-full">
-                                <select name="" id="" class="w-full pt-2 p-2 flex justify center" placeholder="">
-                                    <option value="">Séléctionnez le groupe de taxation</option>
+                                <select name="" id="" class="w-full pt-2 p-2 flex justify center" placeholder="" v-model="itemsArticle.taxGroup">
+                                    <option value="" >Séléctionnez le groupe de taxation</option>
                                     <option v-for="(value, key) in taxGroups" :key="key" :value="value"
                                         class="hover:bg-light-blue">{{
                                             formatOptionLabel(key) }}</option>
@@ -24,18 +24,19 @@
                         </div>
                         <div class="flex my-2 w-full">
                             <div class="mt-2 mb-2 w-full">
-                                <input type="number" class="w-full pt-2 p-2" style="" placeholder="Prix Unitaire TTC" />
+                                <input type="number" class="w-full pt-2 p-2" style="" placeholder="Prix Unitaire TTC" v-model="itemsArticle.price"/>
                             </div>
                             <div class="mt-2 mb-2 w-full">
-                                <input type="number" class="w-full pt-2 p-2" style="" placeholder="Quantité" />
+                                <input type="number" class="w-full pt-2 p-2" style="" placeholder="Quantité" v-model="itemsArticle.quantity"/>
                             </div>
                         </div>
-                        <div class=" my-4">
+                        <!-- <div class=" my-4">
                             <input type="number" class="w-full pt-2 p-2" style="" placeholder="Taxe Spécifique (TS)" />
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
+                <button>+</button>
             </form>
         </div>
     </div>
@@ -44,8 +45,22 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import $httpInfo from "../plugins/axiosInfo";
+import type  {InvoiceData, Payment, InvoiceItem} from '../../Types/invoice';
 import { useToast } from 'vue-toast-notification';
+import { emit } from "process";
 const $toast = useToast();
+
+const itemsArticle = ref<InvoiceItem>({
+    name:'',
+    price: 0,
+    quantity: 0,
+    taxGroup: ''
+})
+
+const emits = defineEmits(['addArticle'])
+function addArticle(data:InvoiceItem){
+    emits('addArticle', data)
+}
 
 var taxGroups: any = ref();
 const infoTax = async () => {
@@ -114,6 +129,8 @@ const getOptionDetails = (key: string) => {
     }
 
 }
+
+
 </script>
 
 <style scoped>
